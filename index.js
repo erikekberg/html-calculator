@@ -39,7 +39,7 @@ addButton.addEventListener("click", () => {
     if (!current || current === 0) {
         saved = display.textContent;
     } else {
-        saved = operate(operator, parseFloat(saved), parseFloat(current));
+        saved = operate(operator, saved, current);
     }
     display.textContent = "";
     if (operator != add) {
@@ -52,7 +52,7 @@ subtractButton.addEventListener("click", () => {
     if (!current || current === 0) {
         saved = display.textContent;
     } else {
-        saved = operate(operator, parseFloat(saved), parseFloat(current));
+        saved = operate(operator, saved, current);
     }
     display.textContent = "";
     if (operator != subtract) {
@@ -61,15 +61,16 @@ subtractButton.addEventListener("click", () => {
 });
 
 multiplyButton.addEventListener("click", () => {
-    if (!current || current === 0) {
+    if (!current || saved === 0) {
         saved = display.textContent;
     } else {
-        saved = operate(operator, parseFloat(saved), parseFloat(current));
+        saved = operate(operator, saved, current);
     }
     display.textContent = "";
     if (operator != multiply) {
         operator = multiply;
     }
+    console.log(saved, current);
 });
 
 divideButton.addEventListener("click", () => {
@@ -77,12 +78,13 @@ divideButton.addEventListener("click", () => {
         saved = display.textContent;
         console.log("yessir")
     } else {
-        saved = operate(operator, parseFloat(saved), parseFloat(current));
+        saved = operate(operator, saved, current);
     }
     display.textContent = "";
     if (operator != divide) {
         operator = divide;
     }
+    console.log(saved, current);
 });
 
 clearButton.addEventListener("click", () => {
@@ -96,8 +98,9 @@ equalsButton.addEventListener("click", () => {
         display.textContent = operate(operator, parseFloat(saved), parseFloat(current));
         console.log(display.textContent);
     }
-    saved = display.textContent;
+    //saved = display.textContent;
     current = null;
+    console.log(saved, current)
 })
 
 buttons.forEach(button => {
