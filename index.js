@@ -18,7 +18,7 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
-    return operator(a, b);
+    return operator(parseFloat(a), parseFloat(b));
 }
 
 let displayText = "0";
@@ -36,7 +36,7 @@ const clearButton = document.querySelector("#clear");
 const equalsButton = document.querySelector("#equals");
 
 addButton.addEventListener("click", () => {
-    if (!current || current === 0) {
+    if (!current || saved === 0) {
         saved = display.textContent;
     } else {
         saved = operate(operator, saved, current);
@@ -49,7 +49,7 @@ addButton.addEventListener("click", () => {
 });
 
 subtractButton.addEventListener("click", () => {
-    if (!current || current === 0) {
+    if (!current || saved === 0) {
         saved = display.textContent;
     } else {
         saved = operate(operator, saved, current);
@@ -58,6 +58,7 @@ subtractButton.addEventListener("click", () => {
     if (operator != subtract) {
         operator = subtract;
     }
+    console.log(saved, current);
 });
 
 multiplyButton.addEventListener("click", () => {
@@ -74,7 +75,7 @@ multiplyButton.addEventListener("click", () => {
 });
 
 divideButton.addEventListener("click", () => {
-    if (!current || current === 0) {
+    if (!current || saved === 0) {
         saved = display.textContent;
         console.log("yessir")
     } else {
